@@ -44,6 +44,18 @@ myComplex myComplex :: operator++ (int) {// 后置++
 	return cp;
 }
 
+struct car {
+	double price;
+	string color;
+	enum types
+	{
+		hld = 0,
+		klz = 1
+	};
+	int set() { return 1; };
+};
+
+
 int main()
 {
 	myComplex c1(1, 2), c2(3, 4), res;
