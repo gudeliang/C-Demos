@@ -151,7 +151,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Bank类.cpp" />
     <ClCompile Include="SunlandDemos.cpp" />
+    <ClCompile Include="圆类桌子类.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Bank类.h" />
+    <ClInclude Include="圆类桌子类.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -18,5 +18,19 @@
     <ClCompile Include="SunlandDemos.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="圆类桌子类.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Bank类.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="圆类桌子类.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Bank类.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
