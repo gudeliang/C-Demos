@@ -1,9 +1,10 @@
 ﻿#include <iostream>
 #include "string"
-using namespace std;
 
 #include "圆类桌子类.h"
 #include "Bank类.h"
+
+using namespace std;
 
 int main()
 {
@@ -35,6 +36,16 @@ int main()
 	bk.disp();
 
 #pragma endregion
+
+#pragma region MyRegion
+
+
+
+
+
+#pragma endregion
+
+
 
 	std::cout << "Hello World!\n";
 }

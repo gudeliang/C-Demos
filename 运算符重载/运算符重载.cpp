@@ -2,6 +2,15 @@
 #include <string>
 using namespace std;
 
+class coutIn
+{
+public:
+	int a = 15, b = 25;
+private:
+
+};
+
+
 class myComplex
 {
 public:
@@ -17,6 +26,10 @@ public:
 	//++ -- 运算符重载
 	myComplex& operator++();// 前置++
 	myComplex operator++(int);// 后置++
+	//cout  cin 重载
+	friend void operator<< (const coutIn &c1, const coutIn &c2);
+	friend void operator>> (const coutIn &c1, const coutIn &c2);
+
 
 private:
 	double ral, imag;
@@ -43,6 +56,15 @@ myComplex myComplex :: operator++ (int) {// 后置++
 	this->ral++;
 	return cp;
 }
+
+void operator<< (const coutIn &c1, const coutIn &c2) {
+
+
+};
+void operator>> (const coutIn &c1, const coutIn &c2) {
+
+
+};
 
 struct car {
 	double price;
