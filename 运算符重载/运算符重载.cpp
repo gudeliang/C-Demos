@@ -4,12 +4,17 @@ using namespace std;
 
 class coutIn
 {
+	//cout  cin 重载
+	friend ostream & operator<< (ostream &os, const coutIn &c2);
+	friend istream & operator>> (istream &is, coutIn &c2);
+
 public:
 	int a = 15, b = 25;
+	//重载强制转换运算符
+	operator double() { return a; }
 private:
 
 };
-
 
 class myComplex
 {
@@ -26,10 +31,6 @@ public:
 	//++ -- 运算符重载
 	myComplex& operator++();// 前置++
 	myComplex operator++(int);// 后置++
-	//cout  cin 重载
-	friend void operator<< (const coutIn &c1, const coutIn &c2);
-	friend void operator>> (const coutIn &c1, const coutIn &c2);
-
 
 private:
 	double ral, imag;
@@ -57,13 +58,15 @@ myComplex myComplex :: operator++ (int) {// 后置++
 	return cp;
 }
 
-void operator<< (const coutIn &c1, const coutIn &c2) {
-
-
+ostream & operator<< (ostream & os, const coutIn & c2) {
+	os << c2.a << "--------" << c2.b << endl;
+	return os;
 };
-void operator>> (const coutIn &c1, const coutIn &c2) {
-
-
+istream & operator>> (istream & is, coutIn & c2) {
+	int num;
+	is >> num;
+	c2.a += num;
+	return is;
 };
 
 struct car {
@@ -92,7 +95,6 @@ int main()
 	res = c1 - c2;
 	res.outCom(); //输出结果
 
-
 	cout << endl << "------- 前置++--------华丽的分割线----------------" << endl;
 	{
 		myComplex test = c1++;
@@ -104,6 +106,32 @@ int main()
 		myComplex test = ++c1;
 		test.outCom();
 	}
+
+#pragma region 流插操作算符重载
+	{
+		coutIn c;
+
+		cout << endl << "--------流插入运算符重载----<<---华丽的分割线----------------" << endl;
+		cout << c << endl;
+		//也可以这么用
+		operator <<(cout, c);
+
+		cout << endl << "--------流读取运算符重载---->>---华丽的分割线----------------" << endl;
+		cin >> c;
+		cout << c << endl;
+	}
+#pragma endregion
+
+#pragma region 重载强制转换运算符
+
+	{
+		cout << endl << "--------重载强制转换运算符---华丽的分割线----------------" << endl;
+		coutIn c;
+		cout << (double)c << endl;
+	}
+
+#pragma endregion
+
 
 	std::cout << "Hello World!\n";
 }
