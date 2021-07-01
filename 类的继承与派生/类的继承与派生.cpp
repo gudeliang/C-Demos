@@ -68,6 +68,39 @@ void BaseClass_2::friendFunc() {
 	dc.v4;
 }
 
+
+class A {
+	int an;
+public:
+	A() {};
+	A(int n) { an = n; };
+
+	void print() {
+		cout << "A对象" << endl;
+		cout << an << endl;
+	};
+	void print(int x) {
+		cout << an << endl;
+	};
+};
+
+
+
+class B :public A {
+	int bn;
+public:
+	B(int n) :A(2 * n) { bn = n; };
+
+	void print() {
+		cout << "基类";  A::print(1); cout << endl;
+		cout << "B对象" << endl;
+		cout << bn << endl;
+	};
+};
+
+
+
+
 int main()
 {
 	//对象大小，是 基类size+派生类size
@@ -89,6 +122,19 @@ int main()
 
 		//派生类的地址可以隐式转换味基类的指针
 		BaseClass_1 *zz = &dc;
+	}
+
+	//派生类基类赋值
+	{
+		A a(10);
+		B b(20);
+		a.print();
+		b.print();
+		cout << "华丽分割线---------------" << endl;
+		a = b;
+		a.print();
+		b.print();
+
 	}
 
 	std::cout << "Hello World!\n";
