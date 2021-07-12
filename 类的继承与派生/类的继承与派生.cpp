@@ -73,7 +73,10 @@ class A {
 	int an;
 public:
 	A() {};
-	A(int n) { an = n; };
+	A(int n) {
+		an = n;
+	};
+	~A() { cout << "A析构函数" << endl; };
 
 	void print() {
 		cout << "A对象" << endl;
@@ -84,20 +87,49 @@ public:
 	};
 };
 
+class C {
+	int cn;
+public:
+	C(int n) {
+		cn = n;
+	};
+	~C() { cout << "C析构函数" << endl; };
 
+};
 
-class B :public A {
+class B :public A, public C //基类构造函数的调用顺序 取决于继承的顺序
+{
 	int bn;
 public:
-	B(int n) :A(2 * n) { bn = n; };
+	B(int n) :A(2 * n), C(n) {
+		bn = n;
+	};
+	~B() { cout << "B析构函数" << endl; }
 
 	void print() {
-		cout << "基类";  A::print(1); cout << endl;
+		cout << "基类";  A::print(1);
 		cout << "B对象" << endl;
 		cout << bn << endl;
 	};
 };
 
+
+class  D
+{
+	int n = 0;
+public:
+	D()
+	{
+
+	};
+	D(D &d) { cout << "构造函数" << endl; };
+	~D() {};
+};
+
+
+class E : D
+{
+};
 
 
 
@@ -131,7 +163,7 @@ int main()
 		a.print();
 		b.print();
 		cout << "华丽分割线---------------" << endl;
-		a = b;
+		a = b; //b的基类a  会覆盖  对象a   ****
 		a.print();
 		b.print();
 
